@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
 import com.vitorribeiroj.workshopmongo.domain.User;
+import com.vitorribeiroj.workshopmongo.dto.UserDTO;
 import com.vitorribeiroj.workshopmongo.repository.UserRepository;
 import com.vitorribeiroj.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -28,4 +29,11 @@ public class UserService {
 		
 	}
 	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail()); 
+	}
 }
